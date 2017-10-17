@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>
+      IKM TOOL
+    </ion-title>
+    <ion-buttons end>
+      <button  ion-button icon-only (click)="review()">
+        Review<ion-icon name="checkmark-circle-outline"></ion-icon>
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="blackBackground">
+  <div  class="top-division" >
+
+    <ion-card  [@size]="clearTemplate" (click)="openQuestionEditor()">
+      <ion-card-header>
+        Question:
+      </ion-card-header>
+
+      <ion-card-content>
+        {{question}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <div class="middle-division">
+    <ion-list *ngFor="let answer of answers;let i = index;">
+      <ion-card [@size]="clearTemplate" (click)="openAnswerEditor(i)">
+        <ion-card-header *ngIf="i == 0">
+          Correct Answer:
+        </ion-card-header>
+        <ion-card-header *ngIf="i != 0">
+          Incorrect Answer {{i}}:
+        </ion-card-header>
+        <ion-card-content>
+          {{answer}}
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+</ion-content>
